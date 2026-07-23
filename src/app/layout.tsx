@@ -14,6 +14,9 @@ export const metadata: Metadata = {
   title: "Lentera Sukahaji | KKN 55 Sukahaji",
   description: "Website portal dan sistem absensi KKN 55 Sukahaji",
   manifest: "/manifest.json",
+  icons: {
+    icon: "/images/logo/LOGO KKN SISDAMAS 55(1).png"
+  }
 };
 
 export const viewport = {

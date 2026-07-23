@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { Camera, Check, Trash2 } from "lucide-react";
 import { members } from "@/data/members";
 import { submitAbsen } from "@/lib/submitAbsen";
+import Image from "next/image";
 
 export default function AbsensiPage() {
   const [countdown, setCountdown] = useState<string>("00.00.00");
@@ -35,19 +36,19 @@ export default function AbsensiPage() {
       let text = "";
       
       // Override to keep open for development/testing if needed, but per logic:
-      if (h === 15 || (h === 16 && now.getMinutes() < 30)) {
+      if (h >= 7 && h < 10) {
         currentlyOpen = true;
-        target.setHours(16, 30, 0);
-        text = "ABSENSI DIBUKA (15:00 - 16:30)";
-      } else if (h < 15) { // 15:00 check
+        target.setHours(10, 0, 0);
+        text = "ABSENSI DIBUKA (07:00 - 10:00)";
+      } else if (h < 7) { 
         currentlyOpen = false;
-        target.setHours(15, 0, 0);
-        text = "ABSENSI DIBUKA HARI INI JAM 15:00";
+        target.setHours(7, 0, 0);
+        text = "ABSENSI DIBUKA HARI INI JAM 07:00";
       } else {
         currentlyOpen = false;
         target.setDate(target.getDate() + 1);
-        target.setHours(15, 0, 0);
-        text = "ABSENSI TUTUP. DIBUKA BESOK JAM 15:00";
+        target.setHours(7, 0, 0);
+        text = "ABSENSI TUTUP. DIBUKA BESOK JAM 07:00";
       }
 
       setIsOpen(currentlyOpen);
@@ -145,7 +146,7 @@ export default function AbsensiPage() {
 
   return (
     <div className="flex flex-col min-h-screen font-sans bg-[#fbf9f1] pt-24 pb-20 px-4">
-      <div className="max-w-md mx-auto w-full">
+      <div className="max-w-md mx-auto w-full relative">
         
         {/* Clock & Status Header */}
         <div className="bg-primary p-6 border-2 border-black brutalist-shadow mb-8 relative">
@@ -164,14 +165,30 @@ export default function AbsensiPage() {
 
         {/* Form Section (Hidden if Closed) */}
         {!isOpen ? (
-          <div className="bg-white border-2 border-black p-8 text-center brutalist-shadow">
+          <div className="bg-white border-2 border-black p-8 flex flex-col items-center text-center brutalist-shadow mt-8">
+            <Image 
+              src="/images/members/absen-tutup.png" 
+              alt="Absen Tutup" 
+              width={128} 
+              height={128} 
+              className="object-contain w-32 h-32 mb-4 drop-shadow-md"
+            />
             <h2 className="font-black text-2xl uppercase mb-2">FORM DIKUNCI</h2>
             <p className="font-medium text-sm">
-              Formulir absensi hanya dapat diakses pada pukul 06:00 hingga 08:00 setiap harinya. Silakan kembali lagi besok.
+              Formulir absensi hanya dapat diakses pada pukul 07:00 hingga 10:00 setiap harinya. Silakan kembali lagi besok.
             </p>
           </div>
         ) : (
-          <div className="flex flex-col gap-8">
+          <div className="flex flex-col gap-8 bg-white border-2 border-black p-6 sm:p-8 brutalist-shadow mt-8">
+            <div className="flex justify-center w-full mb-2">
+              <Image 
+                src="/images/members/absen-buka.png" 
+                alt="Absen Buka" 
+                width={128} 
+                height={128} 
+                className="object-contain w-32 h-32 drop-shadow-md"
+              />
+            </div>
             
             {/* Status Toggle */}
             <div className="flex w-full">

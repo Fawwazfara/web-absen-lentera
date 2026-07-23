@@ -1,7 +1,7 @@
 import { members } from "@/data/members";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowDown, MapPin, Users, Target, CheckCircle2, ChevronRight, Video, Map } from "lucide-react";
+import { ArrowDown, MapPin, Users, Target, CheckCircle2, ChevronRight, Video, Map, Sparkles, Heart } from "lucide-react";
 
 export default function Home() {
   return (
@@ -18,8 +18,10 @@ export default function Home() {
             KKN 55 Sukahaji
           </div>
           
-          <h1 className="text-4xl md:text-5xl font-black text-white text-center mb-6 leading-tight tracking-tight drop-shadow-[0_4px_0_rgba(0,0,0,1)] uppercase">
+          <h1 className="text-4xl md:text-5xl font-black text-white text-center mb-6 leading-tight tracking-tight drop-shadow-[0_4px_0_rgba(0,0,0,1)] uppercase relative inline-block">
+            <Sparkles className="absolute -top-6 -left-6 w-8 h-8 text-yellow-300 animate-pulse drop-shadow-md" />
             Lentera Sukahaji
+            <Heart className="absolute -bottom-4 -right-6 w-8 h-8 text-pink-400 animate-bounce drop-shadow-md" />
           </h1>
           
           <div className="bg-white/10 backdrop-blur-sm border-2 border-black p-4 mb-10 w-full brutalist-shadow">
@@ -47,10 +49,17 @@ export default function Home() {
       <section id="tentang" className="py-16 px-4 bg-white border-b-4 border-black">
         <div className="max-w-lg mx-auto w-full">
           <div className="border-2 border-black bg-white brutalist-shadow mb-8 relative aspect-square md:aspect-video overflow-hidden group">
-            <div className="absolute inset-0 bg-secondary/20 flex flex-col items-center justify-center z-10 pointer-events-none">
-              <MapPin className="w-16 h-16 text-primary drop-shadow-[2px_2px_0_rgba(0,0,0,1)]" />
-              <span className="bg-white border-2 border-black px-3 py-1 font-bold text-xs mt-4">LOKASI DESA</span>
-            </div>
+            <iframe 
+              src="https://maps.google.com/maps?q=Desa+Sukahaji,+Kec.+Sukahaji,+Kabupaten+Majalengka,+Jawa+Barat&t=&z=14&ie=UTF8&iwloc=&output=embed" 
+              className="absolute inset-0 w-full h-full border-0" 
+              allowFullScreen 
+              loading="lazy" 
+              referrerPolicy="no-referrer-when-downgrade"
+            ></iframe>
+            {/* Overlay to allow clicking through to the actual maps app by clicking the bottom button instead, but keeping iframe interactive */}
+            <a href="https://maps.app.goo.gl/MC1epgc7P6ssuWPu8?g_st=ac" target="_blank" rel="noopener noreferrer" className="absolute top-2 right-2 bg-white text-black border-2 border-black font-bold uppercase py-1 px-3 text-xs brutalist-shadow-sm hover:scale-105 transition-transform z-20">
+              Buka di Aplikasi
+            </a>
           </div>
           
           <h2 className="text-3xl font-black uppercase tracking-tight mb-6 border-b-4 border-black inline-block pb-1">
@@ -64,9 +73,9 @@ export default function Home() {
           </div>
 
           <div className="flex flex-col gap-3">
-            <button className="w-full bg-white text-black border-2 border-black font-bold uppercase py-3 px-4 text-left text-sm brutalist-shadow transition-transform active:translate-x-1 active:translate-y-1 active:shadow-none flex justify-between items-center">
+            <a href="https://maps.app.goo.gl/MC1epgc7P6ssuWPu8?g_st=ac" target="_blank" rel="noopener noreferrer" className="w-full bg-white text-black border-2 border-black font-bold uppercase py-3 px-4 text-left text-sm brutalist-shadow transition-transform active:translate-x-1 active:translate-y-1 active:shadow-none flex justify-between items-center">
               LOKASI (GOOGLE MAPS) <Map className="w-5 h-5" />
-            </button>
+            </a>
             <button className="w-full bg-white text-black border-2 border-black font-bold uppercase py-3 px-4 text-left text-sm brutalist-shadow transition-transform active:translate-x-1 active:translate-y-1 active:shadow-none flex justify-between items-center">
               DATA PENDUDUK (2024) <Users className="w-5 h-5" />
             </button>
