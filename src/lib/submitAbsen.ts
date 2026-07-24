@@ -7,7 +7,7 @@ export interface AbsenData {
 }
 
 export async function submitAbsen(data: AbsenData) {
-  const SCRIPT_URL = process.env.NEXT_PUBLIC_APPS_SCRIPT_URL;
+  const SCRIPT_URL = process.env.NEXT_PUBLIC_APPS_SCRIPT_URL || process.env.NEXT_PUBLIC_SCRIPT_URL;
 
   if (!SCRIPT_URL) {
     throw new Error("Sistem belum dikonfigurasi dengan baik (URL Apps Script hilang).");
