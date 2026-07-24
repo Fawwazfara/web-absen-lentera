@@ -50,7 +50,7 @@ export default function Home() {
         <div className="max-w-lg mx-auto w-full">
           <div className="border-2 border-black bg-white brutalist-shadow mb-8 relative aspect-square md:aspect-video overflow-hidden group">
             <iframe 
-              src="https://maps.google.com/maps?q=Desa+Sukahaji,+Kec.+Sukahaji,+Kabupaten+Majalengka,+Jawa+Barat&t=&z=14&ie=UTF8&iwloc=&output=embed" 
+              src="https://maps.google.com/maps?q=Desa+Sukahaji,+Cipeundeuy&t=&z=14&ie=UTF8&iwloc=&output=embed" 
               className="absolute inset-0 w-full h-full border-0" 
               allowFullScreen 
               loading="lazy" 

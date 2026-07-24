@@ -25,7 +25,7 @@ export default function Footer() {
         <div className="max-w-screen-xl mx-auto flex flex-col items-center text-center">
           <div className="flex items-center gap-2 mb-6">
             <div className="w-8 h-8 relative">
-              <Image src="/images/logo/placeholder.png" alt="Logo" width={32} height={32} className="object-contain" />
+              <Image src="/images/logo/LOGO KKN SISDAMAS 55(1).png" alt="Logo" width={32} height={32} className="object-contain" />
             </div>
             <span className="font-bold uppercase tracking-tight text-primary">Lentera Sukahaji</span>
           </div>
