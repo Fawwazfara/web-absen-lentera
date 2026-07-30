@@ -36,19 +36,19 @@ export default function AbsensiPage() {
       let text = "";
       
       // Override to keep open for development/testing if needed, but per logic:
-      if (h >= 7 && h < 10) {
+      if (h >= 9 && h < 12) {
         currentlyOpen = true;
-        target.setHours(10, 0, 0);
-        text = "ABSENSI DIBUKA (07:00 - 10:00)";
-      } else if (h < 7) { 
+        target.setHours(12, 0, 0);
+        text = "ABSENSI DIBUKA (09:00 - 12:00)";
+      } else if (h < 9) { 
         currentlyOpen = false;
-        target.setHours(7, 0, 0);
-        text = "ABSENSI DIBUKA HARI INI JAM 07:00";
+        target.setHours(9, 0, 0);
+        text = "ABSENSI DIBUKA HARI INI JAM 09:00";
       } else {
         currentlyOpen = false;
         target.setDate(target.getDate() + 1);
-        target.setHours(7, 0, 0);
-        text = "ABSENSI TUTUP. DIBUKA BESOK JAM 07:00";
+        target.setHours(9, 0, 0);
+        text = "ABSENSI TUTUP. DIBUKA BESOK JAM 09:00";
       }
 
       setIsOpen(currentlyOpen);
@@ -175,7 +175,7 @@ export default function AbsensiPage() {
             />
             <h2 className="font-black text-2xl uppercase mb-2">FORM DIKUNCI</h2>
             <p className="font-medium text-sm">
-              Formulir absensi hanya dapat diakses pada pukul 07:00 hingga 10:00 setiap harinya. Silakan kembali lagi besok.
+              Formulir absensi hanya dapat diakses pada pukul 09:00 hingga 12:00 setiap harinya. Silakan kembali lagi besok.
             </p>
           </div>
         ) : (

@@ -40,9 +40,9 @@ export default function Navbar() {
       {/* Mobile Dropdown Menu */}
       {isOpen && (
         <div className="fixed top-16 left-0 w-full bg-white border-b-4 border-black z-40 brutalist-shadow md:hidden flex flex-col font-bold uppercase text-lg">
-          <Link href="/" onClick={() => setIsOpen(false)} className="border-b-2 border-black py-4 px-6 hover:bg-secondary transition-colors">Beranda</Link>
-          <Link href="/timeline" onClick={() => setIsOpen(false)} className="border-b-2 border-black py-4 px-6 hover:bg-secondary transition-colors">Timeline</Link>
-          <Link href="/absensi" onClick={() => setIsOpen(false)} className="py-4 px-6 hover:bg-secondary transition-colors">Absensi</Link>
+          <a href="/" onClick={() => setIsOpen(false)} className="border-b-2 border-black py-4 px-6 hover:bg-secondary transition-colors">Beranda</a>
+          <a href="/timeline" onClick={() => setIsOpen(false)} className="border-b-2 border-black py-4 px-6 hover:bg-secondary transition-colors">Timeline</a>
+          <a href="/absensi" onClick={() => setIsOpen(false)} className="py-4 px-6 hover:bg-secondary transition-colors">Absensi</a>
         </div>
       )}
     </>
