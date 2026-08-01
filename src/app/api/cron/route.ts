@@ -4,12 +4,14 @@ import webPush from "web-push";
 
 const redis = Redis.fromEnv();
 
-// Configure web-push with VAPID keys
-webPush.setVapidDetails(
-  process.env.VAPID_SUBJECT || "mailto:admin@lentera-sukahaji.com",
-  process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY || "",
-  process.env.VAPID_PRIVATE_KEY || ""
-);
+// Configure web-push with VAPID keys only if they are available
+if (process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY && process.env.VAPID_PRIVATE_KEY) {
+  webPush.setVapidDetails(
+    process.env.VAPID_SUBJECT || "mailto:admin@lentera-sukahaji.com",
+    process.env.NEXT_PUBLIC_VAPID_PUBLIC_KEY,
+    process.env.VAPID_PRIVATE_KEY
+  );
+}
 
 export async function GET(req: Request) {
   try {
