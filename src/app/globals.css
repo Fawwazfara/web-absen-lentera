@@ -28,12 +28,20 @@
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  background: linear-gradient(-45deg, #064e3b, #0f766e, #065f46, #4d7c0f);
+  background-size: 400% 400%;
+  animation: gradientBG 15s ease infinite;
+  color: #ffffff;
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100vh;
+}
+
+@keyframes gradientBG {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 ::selection {
@@ -41,34 +49,56 @@ body {
   color: #000000;
 }
 
-/* Custom utility classes using standard CSS instead of @apply */
-.brutalist-border {
-  border: 2px solid #000000;
+/* Glassmorphism Utility Classes */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
 }
-.brutalist-shadow {
-  box-shadow: 4px 4px 0px 0px rgba(0,0,0,1);
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 1rem;
+  box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, background 0.3s ease, border 0.3s ease;
 }
-.brutalist-shadow-sm {
-  box-shadow: 2px 2px 0px 0px rgba(0,0,0,1);
+
+.glass-card:hover {
+  transform: translateY(-5px);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
-.brutalist-button {
-  border: 2px solid #000000;
+
+.glass-button {
+  background: rgba(250, 204, 21, 0.8); /* Yellow/Secondary base */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #000000;
   font-weight: 700;
   text-transform: uppercase;
-  transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  box-shadow: 4px 4px 0px 0px rgba(0,0,0,1);
+  border-radius: 9999px; /* Pill shape */
+  box-shadow: 0 4px 16px 0 rgba(250, 204, 21, 0.4);
+  transition: all 0.2s ease-in-out;
 }
-.brutalist-button:active {
-  transform: translate(4px, 4px);
-  box-shadow: none;
+
+.glass-button:hover {
+  background: rgba(250, 204, 21, 1);
+  box-shadow: 0 0 20px 5px rgba(250, 204, 21, 0.6);
+  transform: scale(1.05);
 }
-.brutalist-card {
-  border: 2px solid #000000;
-  background-color: #ffffff;
-  transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  box-shadow: 4px 4px 0px 0px rgba(0,0,0,1);
+
+.glass-button:active {
+  transform: scale(0.95);
 }
-.brutalist-card:hover {
-  transform: translate(-4px, -4px);
-  box-shadow: 8px 8px 0px 0px rgba(0,0,0,1);
+
+/* Subtle glowing text for titles */
+.text-glow {
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
 }
+

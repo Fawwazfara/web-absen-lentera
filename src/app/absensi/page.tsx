@@ -145,19 +145,21 @@ export default function AbsensiPage() {
   };
 
   return (
-    <div className="flex flex-col min-h-screen font-sans bg-[#fbf9f1] pt-24 pb-20 px-4">
-      <div className="max-w-md mx-auto w-full relative">
+    <div className="flex flex-col min-h-screen font-sans bg-transparent pt-24 pb-20 px-4 relative overflow-hidden">
+      {/* Decorative blur blobs */}
+      <div className="absolute top-20 left-4 w-40 h-40 bg-secondary/20 rounded-full blur-[80px]"></div>
+      <div className="absolute bottom-20 right-4 w-60 h-60 bg-primary/40 rounded-full blur-[100px]"></div>
+
+      <div className="max-w-md mx-auto w-full relative z-10">
         
         {/* Clock & Status Header */}
-        <div className="bg-primary p-6 border-2 border-black brutalist-shadow mb-8 relative">
-          <div className="text-center">
-            <h1 className="text-6xl md:text-7xl font-black text-[#a3e635] tracking-tighter drop-shadow-[2px_2px_0_rgba(0,0,0,1)]">
-              {countdown}
-            </h1>
-          </div>
-          <div className="mt-6 bg-secondary border-2 border-black p-3 flex items-center gap-3 brutalist-shadow-sm">
-            <div className={`w-4 h-4 border-2 border-black shrink-0 ${isOpen ? 'bg-green-500 animate-pulse' : 'bg-red-500'}`}></div>
-            <span className="font-bold text-xs md:text-sm uppercase tracking-tight">
+        <div className="glass-card p-8 mb-8 text-center border-t border-l border-white/40">
+          <h1 className="text-6xl md:text-7xl font-black text-secondary tracking-tighter drop-shadow-[0_0_15px_rgba(250,204,21,0.5)] mb-4">
+            {countdown}
+          </h1>
+          <div className="glass-panel p-3 rounded-xl flex items-center justify-center gap-3">
+            <div className={`w-3 h-3 rounded-full shrink-0 ${isOpen ? 'bg-green-400 shadow-[0_0_10px_#4ade80] animate-pulse' : 'bg-red-500 shadow-[0_0_10px_#ef4444]'}`}></div>
+            <span className="font-bold text-xs md:text-sm uppercase tracking-tight text-white/90">
               {statusText}
             </span>
           </div>
@@ -165,42 +167,46 @@ export default function AbsensiPage() {
 
         {/* Form Section (Hidden if Closed) */}
         {!isOpen ? (
-          <div className="bg-white border-2 border-black p-8 flex flex-col items-center text-center brutalist-shadow mt-8">
-            <Image 
-              src="/images/members/absen-tutup.png" 
-              alt="Absen Tutup" 
-              width={128} 
-              height={128} 
-              className="object-contain w-32 h-32 mb-4 drop-shadow-md"
-            />
-            <h2 className="font-black text-2xl uppercase mb-2">FORM DIKUNCI</h2>
-            <p className="font-medium text-sm">
+          <div className="glass-card p-10 flex flex-col items-center text-center mt-8">
+            <div className="glass-panel p-6 rounded-full mb-6">
+              <Image 
+                src="/images/members/absen-tutup.png" 
+                alt="Absen Tutup" 
+                width={96} 
+                height={96} 
+                className="object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.4)]"
+              />
+            </div>
+            <h2 className="font-black text-2xl uppercase mb-3 text-white text-glow">FORM DIKUNCI</h2>
+            <p className="font-medium text-sm text-white/80 leading-relaxed">
               Formulir absensi hanya dapat diakses pada pukul 09:00 hingga 12:00 setiap harinya. Silakan kembali lagi besok.
             </p>
           </div>
         ) : (
-          <div className="flex flex-col gap-8 bg-white border-2 border-black p-6 sm:p-8 brutalist-shadow mt-8">
+          <div className="flex flex-col gap-8 glass-card p-6 sm:p-8 mt-8">
             <div className="flex justify-center w-full mb-2">
-              <Image 
-                src="/images/members/absen-buka.png" 
-                alt="Absen Buka" 
-                width={128} 
-                height={128} 
-                className="object-contain w-32 h-32 drop-shadow-md"
-              />
+              <div className="glass-panel p-4 rounded-full">
+                <Image 
+                  src="/images/members/absen-buka.png" 
+                  alt="Absen Buka" 
+                  width={96} 
+                  height={96} 
+                  className="object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.4)]"
+                />
+              </div>
             </div>
             
             {/* Status Toggle */}
-            <div className="flex w-full">
+            <div className="flex w-full bg-white/5 p-1 rounded-2xl border border-white/10 backdrop-blur-md">
               <button 
                 onClick={() => setIsHadir(true)}
-                className={`flex-1 py-3 font-bold uppercase text-sm border-2 border-black border-r-0 brutalist-shadow-sm transition-colors ${isHadir ? 'bg-primary text-white' : 'bg-white text-black'}`}
+                className={`flex-1 py-3 font-bold uppercase text-sm rounded-xl transition-all ${isHadir ? 'glass-button shadow-lg text-black' : 'text-white/70 hover:text-white'}`}
               >
                 HADIR
               </button>
               <button 
                 onClick={() => setIsHadir(false)}
-                className={`flex-1 py-3 font-bold uppercase text-sm border-2 border-black brutalist-shadow-sm transition-colors ${!isHadir ? 'bg-primary text-white' : 'bg-white text-black'}`}
+                className={`flex-1 py-3 font-bold uppercase text-sm rounded-xl transition-all ${!isHadir ? 'glass-button shadow-lg text-black' : 'text-white/70 hover:text-white'}`}
               >
                 TIDAK HADIR
               </button>
@@ -209,11 +215,11 @@ export default function AbsensiPage() {
             {/* Reason Field (if Tidak Hadir) */}
             {!isHadir && (
               <div className="flex flex-col items-center">
-                <label className="font-bold text-sm uppercase tracking-widest mb-3">ALASAN KETIDAKHADIRAN</label>
+                <label className="font-bold text-sm uppercase tracking-widest mb-3 text-white/90">ALASAN KETIDAKHADIRAN</label>
                 <textarea 
                   value={reason}
                   onChange={(e) => setReason(e.target.value)}
-                  className="w-full h-24 border-2 border-black p-3 outline-none focus:ring-4 focus:ring-secondary/50 font-medium text-center"
+                  className="w-full h-24 glass-panel p-4 rounded-xl outline-none focus:border-secondary focus:ring-2 focus:ring-secondary/50 font-medium text-center text-white placeholder-white/40 transition-all"
                   placeholder="Tuliskan alasan Anda..."
                 />
               </div>
@@ -221,7 +227,7 @@ export default function AbsensiPage() {
 
             {/* PIN Input */}
             <div className="flex flex-col items-center">
-              <label className="font-bold text-sm uppercase tracking-widest mb-3">PIN KEHADIRAN</label>
+              <label className="font-bold text-sm uppercase tracking-widest mb-3 text-white/90">PIN KEHADIRAN</label>
               <div className="flex gap-4">
                 {pin.map((digit, index) => (
                   <input
@@ -232,12 +238,12 @@ export default function AbsensiPage() {
                     value={digit}
                     onChange={(e) => handlePinChange(index, e.target.value)}
                     onKeyDown={(e) => handlePinKeyDown(index, e)}
-                    className="w-14 h-16 border-2 border-black text-center text-3xl font-black outline-none focus:bg-secondary/20 focus:border-black transition-colors"
+                    className="w-14 h-16 glass-panel rounded-xl text-center text-3xl font-black text-white outline-none focus:border-secondary focus:ring-2 focus:ring-secondary/50 transition-all shadow-inner"
                     maxLength={1}
                   />
                 ))}
               </div>
-              <span className="text-xs font-medium uppercase tracking-widest mt-4 opacity-70">
+              <span className="text-xs font-medium uppercase tracking-widest mt-4 text-white/60">
                 GUNAKAN PIN UNIK ANDA
               </span>
             </div>
@@ -256,24 +262,26 @@ export default function AbsensiPage() {
               {!photoBase64 ? (
                 <button 
                   onClick={() => fileInputRef.current?.click()}
-                  className="w-full bg-secondary border-2 border-black py-8 flex flex-col items-center justify-center gap-2 brutalist-shadow transition-transform active:translate-x-1 active:translate-y-1 active:shadow-none hover:bg-secondary/90"
+                  className="w-full glass-panel hover:bg-white/20 py-8 rounded-xl flex flex-col items-center justify-center gap-3 transition-all group border-dashed border-2 border-white/40 hover:border-secondary"
                 >
-                  <Camera className="w-8 h-8 text-black" />
-                  <span className="font-bold text-sm uppercase tracking-wider">AMBIL FOTO / SELFIE</span>
+                  <div className="w-14 h-14 rounded-full bg-white/10 flex items-center justify-center group-hover:scale-110 transition-transform">
+                    <Camera className="w-7 h-7 text-white" />
+                  </div>
+                  <span className="font-bold text-sm uppercase tracking-wider text-white">AMBIL FOTO / SELFIE</span>
                 </button>
               ) : (
-                <div className="w-full bg-white border-2 border-black p-2 relative brutalist-shadow">
+                <div className="w-full glass-panel p-2 rounded-xl relative">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img src={photoBase64} alt="Preview" className="w-full h-48 object-cover border-2 border-black" />
+                  <img src={photoBase64} alt="Preview" className="w-full h-56 object-cover rounded-lg" />
                   
                   <div className="absolute top-4 right-4 flex gap-2">
                     <button 
                       onClick={() => setPhotoBase64(null)}
-                      className="bg-red-500 text-white p-2 border-2 border-black hover:bg-red-600 transition-colors"
+                      className="bg-red-500/80 backdrop-blur-md text-white p-2 rounded-full hover:bg-red-600 transition-colors shadow-lg"
                     >
                       <Trash2 className="w-5 h-5" />
                     </button>
-                    <div className="bg-green-500 text-white p-2 border-2 border-black">
+                    <div className="bg-green-500/80 backdrop-blur-md text-white p-2 rounded-full shadow-lg">
                       <Check className="w-5 h-5" />
                     </div>
                   </div>
@@ -283,7 +291,7 @@ export default function AbsensiPage() {
 
             {/* Notification / Alert */}
             {submitMessage && (
-              <div className={`p-4 border-2 border-black font-bold text-center text-sm brutalist-shadow-sm ${submitMessage.type === 'error' ? 'bg-red-200 text-red-900' : 'bg-[#a3e635] text-black'}`}>
+              <div className={`p-4 rounded-xl font-bold text-center text-sm shadow-lg backdrop-blur-md ${submitMessage.type === 'error' ? 'bg-red-500/20 text-red-200 border border-red-500/50' : 'bg-green-500/20 text-green-200 border border-green-500/50'}`}>
                 {submitMessage.text}
               </div>
             )}
@@ -292,7 +300,7 @@ export default function AbsensiPage() {
             <button 
               onClick={handleSubmit}
               disabled={isSubmitting}
-              className="w-full bg-primary text-white border-2 border-black py-4 font-black text-lg uppercase tracking-widest brutalist-shadow transition-transform active:translate-x-1 active:translate-y-1 active:shadow-none hover:bg-primary/90 disabled:opacity-50 disabled:cursor-not-allowed"
+              className="w-full glass-button py-4 font-black text-lg uppercase tracking-widest mt-2 disabled:opacity-50 disabled:cursor-not-allowed shadow-[0_0_20px_rgba(250,204,21,0.3)]"
             >
               {isSubmitting ? "MENGIRIM..." : "KIRIM ABSEN"}
             </button>

@@ -11,38 +11,38 @@ export default function Navbar() {
   return (
     <>
       {/* Top Navbar */}
-      <nav className="fixed top-0 w-full bg-white border-b-2 border-black z-50 brutalist-shadow-sm">
+      <nav className="fixed top-0 w-full z-50 glass-panel">
         <div className="max-w-screen-xl mx-auto px-4 h-16 flex items-center justify-between">
           <Link href="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 relative">
+            <div className="w-8 h-8 relative bg-white/20 rounded-full p-1 backdrop-blur-md">
               <Image src="/images/logo/LOGO KKN SISDAMAS 55(1).png" alt="Logo" width={32} height={32} className="object-contain" />
             </div>
-            <span className="font-bold text-lg tracking-tight uppercase text-primary">Lentera Sukahaji</span>
+            <span className="font-bold text-lg tracking-tight uppercase text-white text-glow">Lentera Sukahaji</span>
           </Link>
           
           {/* Desktop Nav (Hidden on Mobile) */}
-          <div className="hidden md:flex gap-6 font-bold uppercase text-sm">
-            <Link href="/" className="hover:text-primary transition-colors">Beranda</Link>
-            <Link href="/timeline" className="hover:text-primary transition-colors">Timeline</Link>
-            <Link href="/absensi" className="hover:text-primary transition-colors">Absensi</Link>
+          <div className="hidden md:flex gap-6 font-bold uppercase text-sm text-white">
+            <Link href="/" className="hover:text-secondary transition-colors">Beranda</Link>
+            <Link href="/timeline" className="hover:text-secondary transition-colors">Timeline</Link>
+            <Link href="/absensi" className="hover:text-secondary transition-colors">Absensi</Link>
           </div>
 
           {/* Mobile Menu Button */}
           <button 
             onClick={() => setIsOpen(!isOpen)}
-            className="md:hidden p-2 brutalist-border rounded-none hover:bg-secondary transition-colors"
+            className="md:hidden p-2 rounded-xl bg-white/10 hover:bg-white/20 transition-colors border border-white/20"
           >
-            {isOpen ? <X className="w-6 h-6 text-black" /> : <Menu className="w-6 h-6 text-black" />}
+            {isOpen ? <X className="w-6 h-6 text-white" /> : <Menu className="w-6 h-6 text-white" />}
           </button>
         </div>
       </nav>
 
       {/* Mobile Dropdown Menu */}
       {isOpen && (
-        <div className="fixed top-16 left-0 w-full bg-white border-b-4 border-black z-40 brutalist-shadow md:hidden flex flex-col font-bold uppercase text-lg">
-          <a href="/" onClick={() => setIsOpen(false)} className="border-b-2 border-black py-4 px-6 hover:bg-secondary transition-colors">Beranda</a>
-          <a href="/timeline" onClick={() => setIsOpen(false)} className="border-b-2 border-black py-4 px-6 hover:bg-secondary transition-colors">Timeline</a>
-          <a href="/absensi" onClick={() => setIsOpen(false)} className="py-4 px-6 hover:bg-secondary transition-colors">Absensi</a>
+        <div className="fixed top-16 left-0 w-full glass-panel z-40 md:hidden flex flex-col font-bold uppercase text-lg text-white">
+          <a href="/" onClick={() => setIsOpen(false)} className="border-b border-white/20 py-4 px-6 hover:bg-white/10 transition-colors">Beranda</a>
+          <a href="/timeline" onClick={() => setIsOpen(false)} className="border-b border-white/20 py-4 px-6 hover:bg-white/10 transition-colors">Timeline</a>
+          <a href="/absensi" onClick={() => setIsOpen(false)} className="py-4 px-6 hover:bg-white/10 transition-colors">Absensi</a>
         </div>
       )}
     </>
