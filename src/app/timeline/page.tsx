@@ -5,8 +5,8 @@ export default function TimelinePage() {
   return (
     <div className="flex flex-col min-h-screen font-sans bg-transparent pt-24 pb-20 px-4 relative overflow-hidden">
       {/* Decorative blur blobs */}
-      <div className="absolute top-20 right-0 w-72 h-72 bg-purple-500/20 rounded-full blur-[100px]"></div>
-      <div className="absolute bottom-40 left-0 w-80 h-80 bg-orange-500/20 rounded-full blur-[120px]"></div>
+      <div className="absolute top-20 right-0 w-72 h-72 bg-primary/20 rounded-full blur-[100px]"></div>
+      <div className="absolute bottom-40 left-0 w-80 h-80 bg-secondary/20 rounded-full blur-[120px]"></div>
 
       <div className="max-w-lg mx-auto w-full relative z-10">
         {/* Header Section */}

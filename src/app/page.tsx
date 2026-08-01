@@ -96,8 +96,8 @@ export default function Home() {
       {/* Visi & Misi Section */}
       <section className="py-24 px-4 relative overflow-hidden">
         {/* Decorative blur blobs */}
-        <div className="absolute top-10 left-10 w-64 h-64 bg-pink-500/20 rounded-full blur-[100px]"></div>
-        <div className="absolute bottom-10 right-10 w-80 h-80 bg-purple-500/30 rounded-full blur-[120px]"></div>
+        <div className="absolute top-10 left-10 w-64 h-64 bg-primary/20 rounded-full blur-[100px]"></div>
+        <div className="absolute bottom-10 right-10 w-80 h-80 bg-secondary/20 rounded-full blur-[120px]"></div>
 
         <div className="max-w-lg mx-auto w-full relative z-10">
           <h2 className="text-4xl font-bold tracking-tight mb-12 text-center drop-shadow-md">
