@@ -3,10 +3,10 @@
 :root {
   --background: #ffffff;
   --foreground: #000000;
-  --primary: #064e3b;
+  --primary: #7e22ce; /* Purple */
   --primary-foreground: #ffffff;
-  --secondary: #facc15;
-  --secondary-foreground: #000000;
+  --secondary: #f97316; /* Orange */
+  --secondary-foreground: #ffffff;
 }
 
 @theme inline {
@@ -28,7 +28,7 @@
 }
 
 body {
-  background: linear-gradient(-45deg, #064e3b, #0f766e, #065f46, #4d7c0f);
+  background: linear-gradient(-45deg, #1e1b4b, #4c1d95, #c026d3, #ea580c);
   background-size: 400% 400%;
   animation: gradientBG 15s ease infinite;
   color: #ffffff;
@@ -45,56 +45,56 @@ body {
 }
 
 ::selection {
-  background-color: var(--secondary);
-  color: #000000;
+  background-color: rgba(255, 255, 255, 0.3);
+  color: #ffffff;
 }
 
-/* Glassmorphism Utility Classes */
+/* Glassmorphism Utility Classes (Pure Glass) */
 .glass-panel {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
 .glass-card {
   background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 1rem;
-  box-shadow: 0 4px 24px 0 rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease, background 0.3s ease, border 0.3s ease;
+  border-radius: 1.5rem; /* 24px */
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .glass-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-8px);
   background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 15px 40px 0 rgba(0, 0, 0, 0.3);
 }
 
 .glass-button {
-  background: rgba(250, 204, 21, 0.8); /* Yellow/Secondary base */
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  color: #000000;
-  font-weight: 700;
-  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #ffffff;
+  font-weight: 600;
   border-radius: 9999px; /* Pill shape */
-  box-shadow: 0 4px 16px 0 rgba(250, 204, 21, 0.4);
-  transition: all 0.2s ease-in-out;
+  box-shadow: 0 4px 16px 0 rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 }
 
 .glass-button:hover {
-  background: rgba(250, 204, 21, 1);
-  box-shadow: 0 0 20px 5px rgba(250, 204, 21, 0.6);
-  transform: scale(1.05);
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
 }
 
 .glass-button:active {
-  transform: scale(0.95);
+  transform: translateY(1px);
 }
 
 /* Subtle glowing text for titles */

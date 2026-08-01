@@ -153,13 +153,13 @@ export default function AbsensiPage() {
       <div className="max-w-md mx-auto w-full relative z-10">
         
         {/* Clock & Status Header */}
-        <div className="glass-card p-8 mb-8 text-center border-t border-l border-white/40">
-          <h1 className="text-6xl md:text-7xl font-black text-secondary tracking-tighter drop-shadow-[0_0_15px_rgba(250,204,21,0.5)] mb-4">
+        <div className="glass-card p-8 mb-8 text-center border-t border-l border-white/20">
+          <h1 className="text-6xl md:text-7xl font-bold text-white tracking-tight drop-shadow-lg mb-4">
             {countdown}
           </h1>
-          <div className="glass-panel p-3 rounded-xl flex items-center justify-center gap-3">
+          <div className="glass-panel p-3 rounded-2xl flex items-center justify-center gap-3 w-fit mx-auto">
             <div className={`w-3 h-3 rounded-full shrink-0 ${isOpen ? 'bg-green-400 shadow-[0_0_10px_#4ade80] animate-pulse' : 'bg-red-500 shadow-[0_0_10px_#ef4444]'}`}></div>
-            <span className="font-bold text-xs md:text-sm uppercase tracking-tight text-white/90">
+            <span className="font-semibold text-xs md:text-sm tracking-wide text-white/90">
               {statusText}
             </span>
           </div>
@@ -174,11 +174,11 @@ export default function AbsensiPage() {
                 alt="Absen Tutup" 
                 width={96} 
                 height={96} 
-                className="object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.4)]"
+                className="object-contain drop-shadow-xl"
               />
             </div>
-            <h2 className="font-black text-2xl uppercase mb-3 text-white text-glow">FORM DIKUNCI</h2>
-            <p className="font-medium text-sm text-white/80 leading-relaxed">
+            <h2 className="font-bold text-2xl mb-3 text-white tracking-wide">Form Dikunci</h2>
+            <p className="font-normal text-sm text-white/80 leading-relaxed">
               Formulir absensi hanya dapat diakses pada pukul 09:00 hingga 12:00 setiap harinya. Silakan kembali lagi besok.
             </p>
           </div>
@@ -200,15 +200,15 @@ export default function AbsensiPage() {
             <div className="flex w-full bg-white/5 p-1 rounded-2xl border border-white/10 backdrop-blur-md">
               <button 
                 onClick={() => setIsHadir(true)}
-                className={`flex-1 py-3 font-bold uppercase text-sm rounded-xl transition-all ${isHadir ? 'glass-button shadow-lg text-black' : 'text-white/70 hover:text-white'}`}
+                className={`flex-1 py-3 font-semibold text-sm rounded-xl transition-all ${isHadir ? 'glass-panel shadow-lg text-white font-bold' : 'text-white/60 hover:text-white'}`}
               >
-                HADIR
+                Hadir
               </button>
               <button 
                 onClick={() => setIsHadir(false)}
-                className={`flex-1 py-3 font-bold uppercase text-sm rounded-xl transition-all ${!isHadir ? 'glass-button shadow-lg text-black' : 'text-white/70 hover:text-white'}`}
+                className={`flex-1 py-3 font-semibold text-sm rounded-xl transition-all ${!isHadir ? 'glass-panel shadow-lg text-white font-bold' : 'text-white/60 hover:text-white'}`}
               >
-                TIDAK HADIR
+                Tidak Hadir
               </button>
             </div>
 

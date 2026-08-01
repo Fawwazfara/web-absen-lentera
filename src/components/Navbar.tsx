@@ -37,14 +37,16 @@ export default function Navbar() {
         </div>
       </nav>
 
-      {/* Mobile Dropdown Menu */}
-      {isOpen && (
-        <div className="fixed top-16 left-0 w-full glass-panel z-40 md:hidden flex flex-col font-bold uppercase text-lg text-white">
-          <a href="/" onClick={() => setIsOpen(false)} className="border-b border-white/20 py-4 px-6 hover:bg-white/10 transition-colors">Beranda</a>
-          <a href="/timeline" onClick={() => setIsOpen(false)} className="border-b border-white/20 py-4 px-6 hover:bg-white/10 transition-colors">Timeline</a>
-          <a href="/absensi" onClick={() => setIsOpen(false)} className="py-4 px-6 hover:bg-white/10 transition-colors">Absensi</a>
+      {/* Mobile Fullscreen Menu */}
+      <div 
+        className={`fixed inset-0 z-40 bg-[#1e1b4b]/60 backdrop-blur-3xl flex flex-col items-center justify-center font-semibold text-2xl text-white transition-all duration-300 ${isOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+      >
+        <div className="flex flex-col items-center gap-8">
+          <a href="/" onClick={() => setIsOpen(false)} className="hover:text-secondary hover:scale-110 transition-all tracking-wider drop-shadow-lg">Beranda</a>
+          <a href="/timeline" onClick={() => setIsOpen(false)} className="hover:text-secondary hover:scale-110 transition-all tracking-wider drop-shadow-lg">Timeline</a>
+          <a href="/absensi" onClick={() => setIsOpen(false)} className="hover:text-secondary hover:scale-110 transition-all tracking-wider drop-shadow-lg">Absensi</a>
         </div>
-      )}
+      </div>
     </>
   );
 }
