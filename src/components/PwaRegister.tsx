@@ -21,7 +21,6 @@ export default function PwaRegister() {
           const registration = await navigator.serviceWorker.register("/sw.js");
           console.log("Service Worker registered");
 
-          // Only attempt push if PushManager is available
           if ("PushManager" in window) {
             // Check if already subscribed
             let subscription = await registration.pushManager.getSubscription();
@@ -36,18 +35,20 @@ export default function PwaRegister() {
                     userVisibleOnly: true,
                     applicationServerKey: urlBase64ToUint8Array(publicVapidKey)
                   });
-
-                  // Send to our API
-                  await fetch("/api/subscribe", {
-                    method: "POST",
-                    body: JSON.stringify(subscription),
-                    headers: {
-                      "Content-Type": "application/json",
-                    },
-                  });
-                  console.log("Push subscription saved");
                 }
               }
+            }
+
+            // Always sync the subscription to our server (in case previous attempts failed)
+            if (subscription) {
+              await fetch("/api/subscribe", {
+                method: "POST",
+                body: JSON.stringify(subscription),
+                headers: {
+                  "Content-Type": "application/json",
+                },
+              });
+              console.log("Push subscription sync'd with server");
             }
           }
         } catch (err) {
