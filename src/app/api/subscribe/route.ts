@@ -1,8 +1,10 @@
 import { NextResponse } from "next/server";
 import { Redis } from "@upstash/redis";
 
-// Allow Upstash Redis client to be created automatically if UPSTASH_REDIS_REST_URL is set in Vercel
-const redis = Redis.fromEnv();
+const redis = new Redis({
+  url: process.env.UPSTASH_REDIS_KV_REST_API_URL || process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL || "",
+  token: process.env.UPSTASH_REDIS_KV_REST_API_TOKEN || process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN || "",
+});
 
 export async function POST(req: Request) {
   try {

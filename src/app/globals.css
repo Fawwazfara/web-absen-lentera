@@ -30,7 +30,8 @@
 body {
   background: linear-gradient(-45deg, #020617, #1e3a8a, #0891b2, #0f766e);
   background-size: 400% 400%;
-  animation: gradientBG 15s ease infinite;
+  animation: gradientBG 20s ease infinite; /* Slowed down for better performance */
+  will-change: background-position; /* Hardware acceleration */
   color: #ffffff;
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -52,20 +53,22 @@ body {
 /* Glassmorphism Utility Classes (Pure Glass) */
 .glass-panel {
   background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(12px); /* Reduced blur for performance */
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  will-change: transform;
 }
 
 .glass-card {
   background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(12px); /* Reduced blur for performance */
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: 1.5rem; /* 24px */
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
   transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), background 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform;
 }
 
 .glass-card:hover {
